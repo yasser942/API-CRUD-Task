@@ -29,7 +29,9 @@ class PostController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'published' => 'required|boolean',
+            
         ]);
+        $validatedData['user_id'] = Auth::user()->id;
 
         $post = Post::create($validatedData);
 
@@ -62,7 +64,10 @@ class PostController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'published' => 'required|boolean',
-        ]);
+        ]);      
+          $validatedData['user_id'] = Auth::user()->id;
+
+        
 
         $post = Post::findOrFail($post->id);
         $post->update($validatedData);
